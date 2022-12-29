@@ -13,12 +13,13 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'othree/html5.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
-Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
 
 lua << END
 require('lualine').setup()
+require("nvim-tree").setup()
 END
 
 colorscheme gruvbox
@@ -26,7 +27,7 @@ set number
 set shiftwidth=4
 set mouse=a
 
-nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F3> :NvimTreeToggle<CR>
 
 inoremap {<CR> {<CR>}<C-o>O
 inoremap ( ()<Left>
