@@ -471,4 +471,4 @@ neofetch
 eval $(thefuck --alias)
 alias soosh="ssh"
 
-[ -f .aliases ] && source .aliases
+[ -f ~/.aliases ] && source ~/.aliases
