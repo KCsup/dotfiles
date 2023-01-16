@@ -12,7 +12,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'othree/html5.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
-Plug 'preservim/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
 
@@ -34,3 +34,9 @@ inoremap [ []<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 inoremap ` ``<Left>
+
+" Window Navigation with Ctrl-[hjkl]
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
