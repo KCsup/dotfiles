@@ -25,6 +25,7 @@ colorscheme gruvbox
 set number
 set shiftwidth=4
 set mouse=a
+set colorcolumn=80
 
 nnoremap <F3> :NvimTreeToggle<CR>
 
