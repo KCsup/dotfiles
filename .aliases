@@ -20,3 +20,4 @@ alias amogus="printf '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣿⣿⣷⣶⣄�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁\n'"
 alias yoy="printf '\nI forog the yoy\n' && sleep 1 && while :; do printf '💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n'; done"
 alias gpuvend="glxinfo | grep -i vendor"
+alias yadm-save-all="yadm add -u"
