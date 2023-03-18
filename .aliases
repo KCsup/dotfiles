@@ -21,3 +21,7 @@ alias amogus="printf '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣿⣿⣷⣶⣄�
 alias yoy="printf '\nI forog the yoy\n' && sleep 1 && while :; do printf '💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n'; done"
 alias gpuvend="glxinfo | grep -i vendor"
 alias yadm-save-all="yadm add -u"
+
+if [ -d $HOME/Documents/Obsidian\ Vault/ ]; then
+    alias obsidian-git="git -C $HOME/Documents/Obsidian\ Vault/"
+fi
