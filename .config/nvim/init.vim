@@ -15,6 +15,10 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 
 Plug 'nvim-tree/nvim-tree.lua'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'wintermute-cell/gitignore.nvim'
+
 call plug#end()
 
 lua << END
