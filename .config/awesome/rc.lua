@@ -49,7 +49,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -148,6 +148,16 @@ local tasklist_buttons = gears.table.join(
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
                                           end))
+
+function file_exists(name)
+   local f = io.open(name, "r")
+   return f ~= nil and io.close(f)
+end
+
+garf_path = awful.util.get_configuration_dir() .. "wallpapers/garf.png"
+if file_exists(garf_path) then
+    beautiful.wallpaper = garf_path
+end
 
 local function set_wallpaper(s)
     -- Wallpaper
