@@ -19,6 +19,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'wintermute-cell/gitignore.nvim'
 
+Plug 'ap/vim-css-color'
+
 call plug#end()
 
 lua << END
