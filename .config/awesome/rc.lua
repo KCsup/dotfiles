@@ -14,6 +14,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+-- Revelation
+local revelation=require("revelation")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -46,6 +49,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -325,6 +329,7 @@ globalkeys = gears.table.join(
 --               {description = "run prompt", group = "launcher"}),
     awful.key({ modkey }, "space", function() awful.spawn("rofi -show drun") end,
 		{description = "run prompt", group = "Josh"}),
+    awful.key({ modkey,           }, "e",      revelation),
 
 --     awful.key({ modkey }, "x",
 --               function ()
@@ -567,10 +572,16 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = false})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- Autostart
+awful.spawn.with_shell("/home/josh/.config/polybar/launch.sh")
+awful.spawn.with_shell("pa-applet")
+awful.spawn.with_shell("nm-applet")
