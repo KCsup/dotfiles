@@ -153,6 +153,13 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --                                               awful.client.focus.byidx(-1)
 --                                           end))
 
+-- Adds an empty wibar under my polybar so that the workarea changes
+awful.wibar {
+      position = 'top',
+      height   = 24,
+  }
+
+
 function file_exists(name)
    local f = io.open(name, "r")
    return f ~= nil and io.close(f)
@@ -328,7 +335,10 @@ globalkeys = gears.table.join(
 --     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
 --               {description = "run prompt", group = "launcher"}),
     awful.key({ modkey }, "space", function() awful.spawn("rofi -show drun") end,
+		{description = "drun prompt", group = "Josh"}),
+    awful.key({ modkey }, "r", function() awful.spawn("rofi -show run") end,
 		{description = "run prompt", group = "Josh"}),
+
     awful.key({ modkey,           }, "e",      revelation),
 
 --     awful.key({ modkey }, "x",
@@ -507,7 +517,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -581,7 +591,19 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 
+function run_local_command(command)
+    local handle = io.popen(command)
+    local result = handle:read("*a")
+    handle:close()
+    return result
+end
+
 -- Autostart
 awful.spawn.with_shell("/home/josh/.config/polybar/launch.sh")
-awful.spawn.with_shell("pa-applet")
+
+-- Check if pulse audio tray applet is running; Ran into duplicate problems
+if string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "0") then
+    awful.spawn.with_shell("pasystray")
+end
+
 awful.spawn.with_shell("nm-applet")
