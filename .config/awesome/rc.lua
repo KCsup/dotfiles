@@ -598,12 +598,16 @@ function run_local_command(command)
     return result
 end
 
--- Autostart
-awful.spawn.with_shell("/home/josh/.config/polybar/launch.sh")
-
--- Check if pulse audio tray applet is running; Ran into duplicate problems
-if string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "0") then
-    awful.spawn.with_shell("pasystray")
+function process_is_running(process_name)
+    return string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "1")
 end
 
-awful.spawn.with_shell("nm-applet")
+-- Autostart
+tray_start = {"nm-applet", "pasystray"}
+for i, v in ipairs(tray_start) do
+    if not process_is_running(v) then
+	awful.spawn.with_shell(v)
+    end
+end
+
+awful.spawn.with_shell("/home/josh/.config/polybar/launch.sh")
