@@ -622,4 +622,7 @@ for i, v in ipairs(tray_start) do
     end
 end
 
-awful.spawn.with_shell("/home/josh/.config/polybar/launch.sh")
+awful.spawn.with_shell("~/.config/polybar/launch.sh")
+
+-- Fullscreen Check
+awful.spawn.with_shell("sh ~/.config/polybar/scripts/fullscreen_check.sh &")
