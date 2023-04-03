@@ -15,8 +15,8 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Revelation
-local revelation=require("revelation")
+-- Switcher
+local switcher = require("awesome-switcher")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -49,12 +49,15 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
+
+
+-- Switcher Config
+switcher.settings.preview_box_delay = 0
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -285,14 +288,14 @@ globalkeys = gears.table.join(
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "go back", group = "client"}),
+--     awful.key({ modkey,           }, "Tab",
+--         function ()
+--             awful.client.focus.history.previous()
+--             if client.focus then
+--                 client.focus:raise()
+--             end
+--         end,
+--         {description = "go back", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
@@ -339,8 +342,17 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "r", function() awful.spawn("rofi -show run") end,
 		{description = "run prompt", group = "Josh"}),
 
-    awful.key({ modkey,           }, "e",      revelation),
 
+    -- Switcher Keys
+    awful.key({ "Mod1" }, "Tab",
+      function ()
+          switcher.switch( 1, "Mod1", "Alt_L", "Shift", "Tab")
+      end),
+    
+    awful.key({ "Mod1", "Shift" }, "Tab",
+      function ()
+          switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+      end),
 --     awful.key({ modkey }, "x",
 --               function ()
 --                   awful.prompt.run {
