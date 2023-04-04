@@ -615,18 +615,8 @@ function process_is_running(process_name)
     return string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "1")
 end
 
-function is_laptop()
-    return string.find(run_local_command("laptop-detect; echo $?"), "0")
-end
-
 -- Autostart
 tray_start = {"nm-applet", "pasystray"}
-
--- Laptop Specific
--- Not working, I'm tired
-if is_laptop() then
-    table.insert(tray_start, "cbatticon")
-end
 
 for i, v in ipairs(tray_start) do
     if not process_is_running(v) then
