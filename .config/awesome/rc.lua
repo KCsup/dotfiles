@@ -342,6 +342,14 @@ globalkeys = gears.table.join(
 		{description = "drun prompt", group = "Josh"}),
     awful.key({ "Mod1" }, "r", function() awful.spawn("rofi -show run") end,
 		{description = "run prompt", group = "Josh"}),
+    
+
+    -- Brightness
+
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("light -U 5") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("light -A 5") end),
 
 
     -- Switcher Keys
