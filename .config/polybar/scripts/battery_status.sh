@@ -1,3 +1,4 @@
 #!/bin/bash
-
-echo $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage) | cut -d " " -f 2
+P=$(echo $(acpi -b) | cut -d "," -f 2 | cut -c 2- | tr -d ,)
+S=$(echo $(acpi -b) | cut -d "," -f 1 | cut -d ":" -f 2 | cut -c 2- | tr -d ,)
+echo "$P ($S)"
