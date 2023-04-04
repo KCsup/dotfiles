@@ -58,6 +58,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- Switcher Config
 switcher.settings.preview_box_delay = 0
+switcher.settings.cycle_raise_client = false
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
