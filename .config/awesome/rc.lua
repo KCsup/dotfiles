@@ -21,6 +21,10 @@ local switcher = require("awesome-switcher")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+-- Load awful.remote for awesome-client
+require("awful.remote")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
