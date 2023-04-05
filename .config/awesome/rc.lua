@@ -164,9 +164,21 @@ awful.wibar {
   }
 
 
+-- Util Functions
 function file_exists(name)
    local f = io.open(name, "r")
    return f ~= nil and io.close(f)
+end
+
+function run_local_command(command)
+    local handle = io.popen(command)
+    local result = handle:read("*a")
+    handle:close()
+    return result
+end
+
+function process_is_running(process_name)
+    return string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "1")
 end
 
 garf_path = awful.util.get_configuration_dir() .. "wallpapers/garf.png"
@@ -350,6 +362,20 @@ globalkeys = gears.table.join(
         awful.util.spawn("light -U 5") end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
         awful.util.spawn("light -A 5") end),
+
+
+    -- Audio Control
+    awful.key({ }, "XF86AudioRaiseVolume", function()
+	awful.util.spawn("pamixer -i 5") end),
+    awful.key({ }, "XF86AudioLowerVolume", function()
+	awful.util.spawn("pamixer -d 5") end),
+    awful.key({ }, "XF86AudioMute", function()
+	    if string.find(run_local_command("pamixer --get-mute"), "true") then
+		awful.util.spawn("pamixer -u")
+	    else
+		awful.util.spawn("pamixer -m") 
+	    end
+	end),
 
 
     -- Switcher Keys
@@ -612,16 +638,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 
-function run_local_command(command)
-    local handle = io.popen(command)
-    local result = handle:read("*a")
-    handle:close()
-    return result
-end
-
-function process_is_running(process_name)
-    return string.find(run_local_command("ps -ef | grep pasystray | grep -v grep | wc -l"), "1")
-end
 
 -- Autostart
 tray_start = {"nm-applet", "pasystray"}
