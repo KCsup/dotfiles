@@ -402,6 +402,11 @@ globalkeys = gears.table.join(
 --                   }
 --               end,
 --               {description = "lua execute prompt", group = "awesome"}),
+
+    -- Browser
+    awful.key({ modkey }, "b", function() awful.spawn.with_shell("firefox") end,
+              {description = "open firefox", group = "Josh"}),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
