@@ -363,21 +363,21 @@ globalkeys = gears.table.join(
     -- Brightness
 
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.util.spawn("light -U 5") end),
+        awful.util.spawn("light -U 5", false) end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("light -A 5") end),
+        awful.util.spawn("light -A 5", false) end),
 
 
     -- Audio Control
     awful.key({ }, "XF86AudioRaiseVolume", function()
-	awful.util.spawn("pamixer -i 5") end),
+	awful.util.spawn("pamixer -i 5", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function()
-	awful.util.spawn("pamixer -d 5") end),
+	awful.util.spawn("pamixer -d 5", false) end),
     awful.key({ }, "XF86AudioMute", function()
 	    if string.find(run_local_command("pamixer --get-mute"), "true") then
-		awful.util.spawn("pamixer -u")
+		awful.util.spawn("pamixer -u", false)
 	    else
-		awful.util.spawn("pamixer -m") 
+		awful.util.spawn("pamixer -m", false) 
 	    end
 	end),
 
@@ -404,7 +404,7 @@ globalkeys = gears.table.join(
 --               {description = "lua execute prompt", group = "awesome"}),
 
     -- Browser
-    awful.key({ modkey }, "b", function() awful.spawn.with_shell("firefox") end,
+    awful.key({ modkey }, "b", function() awful.spawn("firefox") end,
               {description = "open firefox", group = "Josh"}),
 
     -- Menubar
