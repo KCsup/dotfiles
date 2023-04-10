@@ -356,8 +356,8 @@ globalkeys = gears.table.join(
 --               {description = "run prompt", group = "launcher"}),
     awful.key({ "Mod1" }, "space", function() awful.spawn("rofi -show drun") end,
 		{description = "drun prompt", group = "Josh"}),
-    awful.key({ "Mod1" }, "r", function() awful.spawn("rofi -show run") end,
-		{description = "run prompt", group = "Josh"}),
+--     awful.key({ "Mod1" }, "r", function() awful.spawn("rofi -show run") end,
+-- 		{description = "run prompt", group = "Josh"}),
     
 
     -- Brightness
