@@ -406,6 +406,8 @@ globalkeys = gears.table.join(
     -- Browser
     awful.key({ modkey }, "b", function() awful.spawn("firefox") end,
               {description = "open firefox", group = "Josh"}),
+    awful.key({ modkey, "Shift" }, "b", function() awful.spawn("firefox -p") end,
+              {description = "open firefox with profile prompt", group = "Josh"}),
 
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
