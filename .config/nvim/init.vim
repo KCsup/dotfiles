@@ -21,11 +21,14 @@ Plug 'wintermute-cell/gitignore.nvim'
 
 Plug 'ap/vim-css-color'
 
+Plug 'windwp/nvim-autopairs'
+
 call plug#end()
 
 lua << END
 require('lualine').setup()
 require("nvim-tree").setup()
+require("nvim-autopairs").setup{}
 END
 
 colorscheme gruvbox
@@ -35,11 +38,4 @@ set mouse=a
 set colorcolumn=80
 
 nnoremap <F3> :NvimTreeToggle<CR>
-
-inoremap {<CR> {<CR>}<C-o>O
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap ` ``<Left>
 
