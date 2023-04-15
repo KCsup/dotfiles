@@ -13,8 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-vim.cmd.colorscheme("gruvbox")
-
 vim.cmd.set("number")
 vim.cmd.set("shiftwidth=4")
 vim.cmd.set("mouse=a")
