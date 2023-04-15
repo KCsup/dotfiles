@@ -20,5 +20,3 @@ vim.cmd.set("shiftwidth=4")
 vim.cmd.set("mouse=a")
 vim.cmd.set("colorcolumn=80")
 
-vim.api.nvim_set_keymap("n", "<F3>", ":NvimTreeToggle<CR>", {})
-
