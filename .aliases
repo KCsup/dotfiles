@@ -26,3 +26,5 @@ alias ls=exa
 if [ -d $HOME/Documents/Obsidian\ Vault/ ]; then
     alias obsidian-git="git -C $HOME/Documents/Obsidian\ Vault/"
 fi
+
+alias rust-docs="rustup docs --book"
