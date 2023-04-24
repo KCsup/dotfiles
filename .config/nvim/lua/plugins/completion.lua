@@ -28,6 +28,8 @@ return {
 		    }
 		}
 	    })
+
+	    lspconfig.tsserver.setup({})
 	end
     },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -105,6 +107,11 @@ return {
 	    require('lspconfig')['rust_analyzer'].setup {
 		capabilities = capabilities
 	    }
+
+	    require('lspconfig')['tsserver'].setup {
+		capabilities = capabilities
+	    }
+
 	end
     },
 
