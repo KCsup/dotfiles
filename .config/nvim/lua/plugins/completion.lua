@@ -30,6 +30,7 @@ return {
 	    })
 
 	    lspconfig.tsserver.setup({})
+	    lspconfig.pyright.setup({})
 	end
     },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -109,6 +110,10 @@ return {
 	    }
 
 	    require('lspconfig')['tsserver'].setup {
+		capabilities = capabilities
+	    }
+
+	    require('lspconfig')['pyright'].setup {
 		capabilities = capabilities
 	    }
 
