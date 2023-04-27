@@ -1,14 +1,20 @@
 return {
-    {
-	"morhetz/gruvbox",
-	priority = 1000,
+--    {
+--	"morhetz/gruvbox",
+--	priority = 1000,
+--	config = function()
+--	    vim.cmd.colorscheme("gruvbox")
+--	end
+--    },
+    { "sainnhe/gruvbox-material",
 	config = function()
-	    vim.cmd.colorscheme("gruvbox")
+	    vim.cmd.set("background=dark")
+	    vim.cmd.let("g:gruvbox_material_better_performance = 1")
+	    vim.cmd.colorscheme("gruvbox-material")
 	end
     },
     { "nvim-lualine/lualine.nvim", config = true },
-    { 
-	"nvim-tree/nvim-tree.lua",
+    { "nvim-tree/nvim-tree.lua",
 	keys = {
 	    { "<F3>", "<cmd>NvimTreeToggle<CR>" }
 	},
@@ -25,11 +31,28 @@ return {
 --	    })
 --	end
     },
-    "nvim-tree/nvim-web-devicons",
+    { "nvim-tree/nvim-web-devicons" },
 
     { "windwp/nvim-autopairs", config = true },
 
-    { "nvim-treesitter/nvim-treesitter" },
+    { "nvim-treesitter/nvim-treesitter",
+	config = function()
+	    local tree_config = require('nvim-treesitter.configs')
+	    tree_config.setup {
+		ensure_installed = { "python", "rust", "typescript", "lua" },
+		sync_install = false,
+		auto_install = true,
+		highlight = {
+		    enable = true,
+		    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+		    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+		    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+		    -- Instead of true it can also be a list of languages
+		    additional_vim_regex_highlighting = false,
+		},
+	    }
+	end
+    },
 
     { 'nvim-telescope/telescope.nvim',
 	tag = '0.1.1',
