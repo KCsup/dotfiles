@@ -13,7 +13,6 @@ return {
 	    vim.cmd.colorscheme("gruvbox-material")
 	end
     },
-    { "nvim-lualine/lualine.nvim", config = true },
     { "nvim-tree/nvim-tree.lua",
 	keys = {
 	    { "<F3>", "<cmd>NvimTreeToggle<CR>" }
