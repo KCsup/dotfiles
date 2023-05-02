@@ -1,0 +1,12 @@
+theme = "gruvbox"
+
+[editor]
+rulers = [80]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false

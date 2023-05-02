@@ -28,3 +28,4 @@ if [ -d $HOME/Documents/Obsidian\ Vault/ ]; then
 fi
 
 alias rust-docs="rustup docs --book"
+alias hx=helix
