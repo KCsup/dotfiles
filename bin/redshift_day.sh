@@ -1,0 +1,2 @@
+DAY_SETTING=5600
+redshift -PO $DAY_SETTING

@@ -29,3 +29,6 @@ fi
 
 alias rust-docs="rustup docs --book"
 alias hx=helix
+
+alias rsn="sh ~/bin/redshift_night.sh"
+alias rsd="sh ~/bin/redshift_day.sh"
