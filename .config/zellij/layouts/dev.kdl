@@ -4,10 +4,9 @@ layout {
 	}
 
 	pane {
-		size "65%"
+		split_direction "horizontal"
 		pane {
 			size "70%"
-			cwd "./src"
 		}
 		pane size="30%"
 	}
