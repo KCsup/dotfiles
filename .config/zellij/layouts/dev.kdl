@@ -1,0 +1,18 @@
+layout {
+	pane size=1 borderless=true {
+		plugin location="zellij:tab-bar"
+	}
+
+	pane {
+		size "65%"
+		pane {
+			size "70%"
+			cwd "./src"
+		}
+		pane size="30%"
+	}
+		
+	pane size=1 borderless=true {
+		plugin location="zellij:status-bar"
+	}
+}

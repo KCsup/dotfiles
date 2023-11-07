@@ -33,3 +33,4 @@ alias hx=helix
 alias rsn="sh ~/bin/redshift_night.sh"
 alias rsd="sh ~/bin/redshift_day.sh"
 alias zrust="zellij --layout=rust"
+alias zdev="zellij --layout=dev"
