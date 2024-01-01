@@ -1,0 +1,9 @@
+[user]
+	email = kcsup05@gmail.com
+	name = KCsup
+[core]
+	autocrlf = input
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
